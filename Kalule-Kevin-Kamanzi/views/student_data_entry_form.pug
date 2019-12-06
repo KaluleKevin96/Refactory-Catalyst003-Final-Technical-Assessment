@@ -1,0 +1,122 @@
+extends layout
+
+block content
+    div.mt-5.row.justify-content-center
+        div.col-md-7
+            if (error_message != undefined)
+                br
+                div.row.justify-content-center
+                    div.col-md-12.error_messages.alert.alert-danger.alert-dismissable(style="padding:1.5%;")
+                        a.close(href="#" data-dismiss="alert" aria-label="close") &times;
+                        | #{error_message}
+                hr
+            else 
+                div.empty-div
+
+            div.card
+                div.card-header
+                    div.card-title
+                        h4 Student Details Entry Form
+                            a.btn.btn-primary.btn-md.float-right(href="students/all_students") ALL STUDENTS
+                div.card-body
+                    span.help-text Not all fields marked with a red start (
+                        i.fa.fa-star.text-danger 
+                        | )
+
+                    br
+                    form.form.student_data_entry_form(action="/students/save_student" method="POST")
+                        .row
+                            div.col-md-6.col-6
+                                .form-group
+                                    label.col-form-label(for="surName")
+                                        | Sur name 
+                                        i.fa.fa-star.text-danger
+                                    input.form-control(type="text" id="surName" name="surName" placeholder="Enter your Sur Name here")
+                                    div.col-sm-4.text-danger#surName_error
+                            
+                            div.col-md-6.col-6
+                                .form-group
+                                    label.col-form-label(for="givenName")
+                                        | Given name 
+                                        i.fa.fa-star.text-danger
+                                    input.form-control(type="text" id="givenName" name="givenName" placeholder="Enter your Given Name here")
+                                    div.col-sm-4.text-danger#givenName_error
+                        
+                        label.col-form-label(style="display:block;")
+                            | Gender
+                            i.fa.fa-star.text-danger
+                        div.row.ml-1.border-refactory
+                            div.form-group(style="padding:1%")
+                                div.custom-control.custom-radio.custom-control-inline
+                                    input.custom-control-input(type="radio" id="Male" value="Male" name="gender")
+                                    label.custom-control-label(for="Male") Male
+
+                                div.custom-control.custom-radio.custom-control-inline
+                                    input.custom-control-input(type="radio" id="Female" value="Female" name="gender")
+                                    label.custom-control-label(for="Female") Female
+                            div.col-sm-4.text-danger#gender_radio_button_error
+                        
+                        .row
+                            .col-md-6.col-6
+                                label.col-form-label Date Of Birth
+                                input.form-control(type="date" id="dob" name="dob" placeholder="01/01/1970")
+                                div.col-sm-4.text-danger#dob_error
+                            .col-md-6.col-6
+                                div.form-group
+                                    label.col-form-label Country
+                                        i.fa.fa-star.text-danger
+                                    select.form-control#country(name="country")
+                                        option(value="") ---------------- Select Country -------------
+                                        option(value="Uganda") Uganda
+                                        option(value="Kenya") Kenya
+                                        option(value="Tanzania") Tanzania
+                                    div.col-sm-12.text-danger#country_error
+                        
+                        .row
+                            .col-md-6.col-6 
+                                .form-group
+                                    label.col-form-label Place of Residence
+                                        i.fa.fa-star.text-danger
+                                    input.form-control(type="text" id="placeOfResidence" name="placeOfResidence" placeholder="Enter your current place of residence")
+                                    div.col-sm-12.text-danger#placeOfResidence_error
+                            .col-md-6.col-6 
+                                .form-group
+                                    label.col-form-label Phone number
+                                        i.fa.fa-star.text-danger
+                                    input.form-control(type="tel" id="phoneNumber" name="phoneNumber" placeholder="Eg.. 07xxxxxxxx or +2567xxxxxxxx")
+                                    div.col-sm-12.text-danger#phoneNumber_error
+
+                        .row
+                            .col-md-12.col-12
+                                .form-group
+                                    label.col-form-label Email Address
+                                        i.fa.fa-star.text-danger
+                                    input.form-control(type="email" name="email" id="email" placeholder="E.g applicant@gmail.com")
+                                    div.col-sm-12.text-danger#email_error
+                        .row
+                            .col-md-6.col-6 
+                                .form-group
+                                    label.col-form-label Skills      
+                                    span.form-text.text-muted (Separate Skills With Commas)
+                                        i.fa.fa-star.text-danger
+                                    textarea.form-control(name="skills" cols="30" rows="5")
+                                    div.col-sm-12.text-danger#skills_error
+                            .col-md-6.col-6 
+                                .form-group
+                                    label.col-form-label Projects      
+                                    span.form-text.text-muted (Separate Projects With Commas)
+                                        i.fa.fa-star.text-danger
+                                    textarea.form-control(name="projects" cols="30" rows="5")
+                                    div.col-sm-12.text-danger#projects_error
+
+                        .row
+                            .col-md-4.col-4.offset-8
+                                //- a.btn.btn-submit.btn-md#submit_button(href="#" name="submit_button") Submit
+                                input.btn.btn-submit.btn-md(type="submit")
+                                | &nbsp;&nbsp;&nbsp;
+                                input.btn.btn-outline-submit.btn-md(type="reset")
+
+    script(src="../js/validate.js")
+
+
+

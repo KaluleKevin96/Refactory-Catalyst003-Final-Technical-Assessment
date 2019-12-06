@@ -1,0 +1,69 @@
+extends layout
+
+block content
+    div.mt-5.row.justify-content-center
+        div.col-md-10
+            if (error_message != undefined)
+                br
+                div.row.justify-content-center
+                    div.col-md-3.error_messages.alert.alert-danger.alert-dismissable(style="padding:1.5%;")
+                        a.close(href="#" data-dismiss="alert" aria-label="close") &times;
+                        | #{error_message}
+                hr
+            else if (success_message != undefined)
+                br
+                div.row.justify-content-center
+                    div.col-md-3.error_messages.alert.alert-success.alert-dismissable(style="padding:1.5%;")
+                        a.close(href="#" data-dismiss="alert" aria-label="close") &times;
+                        | #{success_message}
+            else
+                div.empty-div
+
+            div.card
+                div.card-header
+                    div.card-title
+                        h4 ALL STUDENTS
+                            a.btn.btn-info.btn-md.float-right(href="/") REGISTER STUDENT
+                
+                .card-body
+                    div.table-responsive
+                        table.table
+                            thead.thead-dark
+                                tr
+                                    th Student ID
+                                    th Student Name
+                                    th Gender
+                                    th Email
+                                    th Date Of Birth
+                                    th Country
+                                    th Place Of Residence
+                                    th Skills
+                                    th Projects
+                                    th(colspan="3")
+                            tbody
+                                each student in students
+                                    tr
+                                        td #{student.studentID}
+                                        td #{student.surName} #{student.givenName}
+                                        td #{student.gender}
+                                        td #{student.email}
+                                        td #{student.dob}
+                                        td #{student.country}
+                                        td #{student.placeOfResidence}
+                                        td #{student.skills}
+                                        td #{student.projects}                                        
+                                        td
+                                            a.btn.btn-md.mb-2(href="/students/view_student/"+ student._id title="VIEW "+ student.surName +" "+ student.givenName +"") 
+                                                i.fa.fa-eye.fa-2x
+                                        td
+                                            a.btn.btn-md.btn-primary.mb-2(href="#"+ student._id title="EDIT "+ student.surName +" "+ student.givenName +"") 
+                                                i.fa.fa-edit
+                                        td
+                                            a.btn.btn-md.btn-danger.mb-2(href="#"+ student._id title="DELETE "+ student.surName +" "+ student.givenName +"") 
+                                                i.fa.fa-trash
+                                else
+                                    tr 
+                                        td.text-danger.text-center(colspan="9") 
+                                            | THERE ARE NO SUDENTS REGISTERED YET 
+                                            | <br/> <br/>
+                                            a.btn.btn-md.btn-outline-submit(href="/") Register A New Student       

@@ -13,7 +13,7 @@ const studentschema = mongoose.Schema({
         required:[true , "Please Fill Student Sur Name"]
     },
     givenName:{
-        type:Date,
+        type:String,
         required:[true , "Please Enter Student Given Name"]
     },
     gender:{
@@ -35,6 +35,10 @@ const studentschema = mongoose.Schema({
     email:{
         type:String,
         required:[true , "Please Enter Student Email"]
+    },
+    phoneNumber:{
+        type:String,
+        required:[true , "Please Enter Student Phone Number"]
     },
     skills:{
         type:String,

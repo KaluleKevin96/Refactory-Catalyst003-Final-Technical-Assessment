@@ -11,7 +11,7 @@ const multer = require('multer');
 const passport = require('passport'); //importing passport
 const LocalStrategy = require('passport-local').Strategy;
 
-var cons = require('consolidate'); //importing module to help set html as default view engine
+// var cons = require('consolidate'); //importing module to help set html as default view engine
 
 //initialising the app
 const app = express();
@@ -27,13 +27,13 @@ app.use(bodyParser.urlencoded({ extended: true }))
 //declaring the path where the views shall be stored
 app.set('views', path.join(__dirname, 'views'));
 
-//defining the view enegine to be pug - OLDER
-// app.set('view engine', 'pug');
+//defining the view enegine to be pug
+app.set('view engine', 'pug');
 
 
 // view engine setup
-app.engine('html', cons.swig)
-app.set('view engine', 'html');
+/* app.engine('html', cons.swig)
+app.set('view engine', 'html'); */
 
 
 
@@ -81,7 +81,7 @@ app.use((req , res , next) => {
 
 //connect to databese
 mongoose.connect('mongodb://localhost:27017/assessment', { useNewUrlParser: true , useUnifiedTopology: true , useFindAndModify: false }, () => {
-    console.log("Connected to database");
+    console.log("Connected to Student database");
 });
 
 

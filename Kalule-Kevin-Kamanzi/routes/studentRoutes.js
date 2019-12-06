@@ -12,6 +12,14 @@ const Student = require('../models/Student');
 const current_date = new Date();
 
 router.get('/all_students' , async(req,res) => {
+
+    var students = await Student.find();
+console.log(students);
+    res.render('all_students' , {
+
+        title:"ALL STUDENTS",
+        students:students
+    })
    
 });
 
@@ -22,7 +30,7 @@ router.post('/save_student' , async(req,res) => {
     //incoporate session code later
 
     //generate secondary id (student id)
-var student_id , autonumber , current_year ;
+var student_id , autonumber , current_year, skills ,projects ;
 
 current_year = current_date.getFullYear(); //getting the current year
 
@@ -57,24 +65,46 @@ autonumber += 1;
 if(autonumber < 10){
     student_id = "ST"+current_year.toString().slice(1,4)+"000" +autonumber ;
 }else if(autonumber >= 10){
-    student_id = "A"+current_year.toString().slice(1,4)+"00" +autonumber ;
+    student_id = "ST"+current_year.toString().slice(1,4)+"00" +autonumber ;
 }else if(autonumber >= 100){
-    student_id = "A"+current_year.toString().slice(1,4)+"0" +autonumber ;
+    student_id = "ST"+current_year.toString().slice(1,4)+"0" +autonumber ;
 }else if(autonumber >= 1000){
-    student_id = "A"+current_year.toString().slice(1,4)+"" +autonumber ;
+    student_id = "ST"+current_year.toString().slice(1,4)+"" +autonumber ;
 }
 
+if(req.body.skills == '' || req.body.skills == null || req.body.skills == undefined){
+
+    skills = "None Listed";
+
+}else{
+
+    skills = req.body.skills;
+}
+
+if(req.body.projects == '' || req.body.projects == null || req.body.projects == undefined){
+
+    projects = "None Listed";
+    
+}else{
+
+    projects = req.body.projects;
+}
 //insert student into database via document (model instance)
 var saved_student = new Student({
 
-    student_id : student_id,
+    studentID : student_id,
     surName : req.body.surName,
     givenName : req.body.givenName,
     email : req.body.email,
+    phoneNumber : req.body.phoneNumber,
     gender : req.body.gender,
     dob: req.body.dob,
+    country:req.body.country,
+    placeOfResidence : req.body.placeOfResidence,
     autonumber : autonumber,
     year : current_year,
+    skills : skills,
+    projects : projects,
     status : "active",
     added_on : Date.now()
 
@@ -84,21 +114,48 @@ var saved_student = new Student({
 
         await saved_student.save();
 
-        return res.redirect('/all_students');
+        // req.session.success_message = req.body.surName + " " + req.body.givenName + " was registered successfully";
+
+        return res.redirect('/students/all_students');
+        // return res.send("Student Saved Successfully");
+
+        /* return res.render('all_students' , {
+    
+            title : "ALL STUDENTS",
+            success_message : req.body.surName + " " + req.body.givenName + " was registered successfully"
+        }); */
         
     } catch (error) {
 
         console.log(error.message)            
             
-            return res.render('administrators/register_administrator' , {
+            return res.render('student_data_entry_form' , {
     
-                title:"REGISTER ADMINISTRATOR",
-                account : account,
+                title : "Student Data Entry Form",
                 error_message : error.message
             });
         
     }
 })
 
+
+//getting a single user
+router.get('/view_student/:id', async (req, res, next) => {
+
+    try{
+        //find user with the id
+        var student = await Student.findById(req.params.id);
+
+        return res.render('/single_stdent' , {
+            title : student.surName + " " + student.givenName + " PROFILE",
+            student: student
+        });
+    }
+    catch(err){
+// req.flash("error", err);
+        return res.send("Failed to submit");
+    }
+   
+  });
 
 module.exports = router;
