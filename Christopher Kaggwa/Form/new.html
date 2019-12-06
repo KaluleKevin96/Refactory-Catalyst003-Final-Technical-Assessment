@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./css/crispy.css" />
+    <link rel="stylesheet" type="text/css" href="./css/new.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+  </head>
+  <body>
+    <section class="flex jc-center ai-center">
+      <div class="formWrap">
+        <form action="/" class="validate-form" method="POST">
+          <div class="grid full">
+            <div class="row">
+              <div class="md-12">
+                <h2>Student Details Entry Form</h2>
+                <p>Not all fields marked with a red star (*) are required</p>
+              </div>
+            </div>
+            <div class="row bg1">
+              <div
+                class="inputLabel validate-input md-6 flex fd-column"
+                data-validate="Please Type Your Sur Name"
+              >
+                <label for="">Sur Name<span style="color: red;">*</span></label
+                ><input type="text" class="field" name="surName" />
+              </div>
+              <div
+                class="inputLabel validate-input md-6 flex fd-column"
+                data-validate="Please Type Your Given Name"
+              >
+                <label for=""
+                  >Given Name<span style="color: red;">*</span></label
+                ><input type="text" class="field" name=""givenName/>
+              </div>
+            </div>
+            <div class="row">
+              <div
+                class="inputLabel md-12 flex"
+                style="padding: 11px 0;border: 1px solid #542a52; margin: 0 15px;"
+                data-validate="Please choose a gender"
+              >
+                <input type="radio" id="male" name="gender" class="field" />
+                <label for="male">Male<span style="color: red;">*</span></label>
+                <input type="radio" name="gender" class="field" id="female" />
+                <label for="female"
+                  >Female<span style="color: red;">*</span></label
+                >
+              </div>
+            </div>
+            <div class="row">
+              <div
+                class="inputLabel md-6 flex validate-input fd-column"
+                data-validate="Please choose your date of birth"
+              >
+                <label for=""
+                  >Date of Birth<span style="color: red;">*</span></label
+                ><input type="date" class="field" />
+              </div>
+              <div class="inputLabel md-6 flex fd-column">
+                <label for="">Country<span style="color: red;">*</span></label
+                ><select name="" id="">
+                  <option value="">Please Choose...</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div
+                class="inputLabel md-6 flex fd-column validate-input"
+                data-validate="Please Type Your Residence"
+              >
+                <label for=""
+                  >Place of Residence<span style="color: red;">*</span></label
+                ><input type="text" class="field" />
+              </div>
+              <div
+                class="inputLabel md-6 flex fd-column validate-input"
+                data-validate="Please Type Your Phone number"
+              >
+                <label for=""
+                  >Phone Number<span style="color: red;">*</span></label
+                ><input type="text" class="field" />
+              </div>
+            </div>
+            <div class="row">
+              <div
+                class="inputLabel md-12 flex fd-column validate-input"
+                data-validate="Please Type Your Email"
+              >
+                <label for="">Email<span style="color: red;">*</span></label>
+                <input type="email" id="male" class="field" name="gender" />
+              </div>
+            </div>
+            <div class="row">
+              <div
+                class="inputLabel md-6 flex fd-column validate-input"
+                data-validate="This field is required"
+              >
+                <label for="">Projects<span style="color: red;">*</span></label
+                ><textarea
+                  name=""
+                  class="field"
+                  id=""
+                  cols="30"
+                  rows="10"
+                ></textarea>
+              </div>
+              <div
+                class="inputLabel md-6 flex fd-column validate-input"
+                data-validate="This field is required"
+              >
+                <label for="">Skills<span style="color: red;">*</span></label
+                ><textarea
+                  name=""
+                  class="field"
+                  id=""
+                  cols="30"
+                  rows="10"
+                ></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class="inputLabel md-12 flex jc-end">
+                <div class="md-6"></div>
+                <div class="md-6 flex" style="padding: 0;">
+                  <button
+                    class="half"
+                    style="background-color: #542a52;color: white;"
+                  >
+                    Submit
+                  </button>
+                  <button
+                    class="half"
+                    style="background-color: white; color: #542a52;"
+                    type="reset"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
