@@ -80,7 +80,7 @@ app.use((req , res , next) => {
  })
 
 //connect to databese
-mongoose.connect('mongodb://localhost:27017/assessment', { useNewUrlParser: true , useUnifiedTopology: true , useFindAndModify: false }, () => {
+mongoose.connect('mongodb://localhost:27017/refactory', { useNewUrlParser: true , useUnifiedTopology: true , useFindAndModify: false }, () => {
     console.log("Connected to Student database");
 });
 
