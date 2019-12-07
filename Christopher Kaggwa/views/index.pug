@@ -1,0 +1,90 @@
+meta(charset='UTF-8')
+meta(name='viewport' content='width=device-width,initial-scale=1')
+meta(http-equiv='X-UA-Compatible' content='ie=edge')
+title Students
+link(rel='stylesheet' type='text/css' href='./css/crispy.css')
+link(rel='stylesheet' type='text/css' href='./css/new.css')
+link(rel='stylesheet' type='text/css' href='css/main.css')
+section.flex.jc-center.ai-center
+  .formWrap
+    form.validate-form(action="/" method="POST")
+      .grid.full
+        .row
+          .md-12
+            h2 Student Details Entry Form
+            p Not all fields marked with a red star (*) are required
+        .row.bg1
+          .inputLabel.validate-input.md-6.flex.fd-column(data-validate='Please Type Your Sur Name')
+            label(for)
+              | Sur Name
+              span(style='color: red;') *
+            input.field(type='text' name="surName")
+          .inputLabel.validate-input.md-6.flex.fd-column(data-validate='Please Type Your Given Name')
+            label(for)
+              | Given Name
+              span(style='color: red;') *
+            input.field(type='text' name="givenName")
+        .row
+          .inputLabel.md-12.flex(style='padding: 11px 0;border: 1px solid #542a52; margin: 0 15px;' data-validate='Please choose a gender')
+            input#male.field(type='radio' name='gender' value="male")
+            label(for='male')
+              | Male
+              span(style='color: red;') *
+            input.field#female(type='radio' name='gender' value="female")
+            label(for='female')
+              | Female
+              span(style='color: red;') *
+        .row
+          .inputLabel.md-6.flex.validate-input.fd-column(data-validate='Please choose your date of birth')
+            label(for)
+              | Date of Birth
+              span(style='color: red;') *
+            input.field(type='date' name="DOB")
+          .inputLabel.md-6.flex.fd-column
+            label(for)
+              | Country
+              span(style='color: red;') *
+            select(name)
+              option(value) Please Choose...
+        .row
+          .inputLabel.md-6.flex.fd-column.validate-input(data-validate='Please Type Your Residence')
+            label(for)
+              | Place of Residence
+              span(style='color: red;') *
+            input.field(type='text' name="residence")
+          .inputLabel.md-6.flex.fd-column.validate-input(data-validate='Please Type Your Phone number')
+            label(for)
+              | Phone Number
+              span(style='color: red;') *
+            input.field(type='text' name="phone")
+        .row
+          .inputLabel.md-12.flex.fd-column.validate-input(data-validate='Please Type Your Email')
+            label(for)
+              | Email
+              span(style='color: red;') *
+            input#male.field(type='email' name='email')
+        .row
+          .inputLabel.md-6.flex.fd-column.validate-input(data-validate='This field is required')
+            label(for)
+              | Projects
+              span(style='color: red;') *
+            textarea.field(name="projects" cols='30' rows='10')
+          .inputLabel.md-6.flex.fd-column.validate-input(data-validate='This field is required')
+            label(for)
+              | Skills
+              span(style='color: red;') *
+            textarea.field(cols='30' name="skills" rows='10')
+        .row
+          .inputLabel.md-12.flex.jc-end
+            .md-6
+            .md-6.flex(style='padding: 0;')
+              button.half(style='background-color: #542a52;color: white;').
+                
+                Submit
+                
+              button.half(style='background-color: white; color: #542a52;' type='reset').
+                
+                Cancel
+                
+script(src='./js/jquery-3.2.1.min.js')
+script(src='js/main.js')
