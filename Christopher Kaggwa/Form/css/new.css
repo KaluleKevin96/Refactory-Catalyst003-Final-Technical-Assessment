@@ -1,0 +1,61 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.formWrap {
+  width: 60%;
+}
+
+label {
+  color: #542a52;
+  font-size: 18px;
+}
+input,
+select,
+textarea {
+  padding: 8px 8px;
+  font-size: 17px;
+  background: white;
+  outline-color: #542a52;
+}
+h2 {
+  background: #542a52;
+  padding: 8px;
+  color: white;
+}
+button {
+  padding: 7px 22px;
+  margin-top: 6px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+textarea {
+  height: 65px;
+  resize: none;
+  font-size: unset;
+}
+form .row {
+  margin-bottom: 7px;
+}
+
+.validate-input {
+  position: relative;
+}
+
+.alert-validate::before {
+  content: attr(data-validate);
+  pointer-events: none;
+  color: #fa4251;
+}
+
+/*---------------------------------------------*/
+@media (max-width: 576px) {
+  .alert-validate::before {
+    padding: 0 10px 0 10px;
+  }
+
+  .true-validate::after,
+  .btn-hide-validate {
+    right: 0px;
+    width: 30px;
+  }
+}
